@@ -1,0 +1,80 @@
+$navbar-default-bg: #312312;
+$light-orange: #ff8c00;
+$navbar-default-color: $light-orange;
+
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+#logo {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  float: left;
+  font-size: 2em;
+  color: #FFF;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  
+}
+
+#logo:hover {
+  color: #FFF;
+  text-decoration: none;
+}
+body {
+  margin: 0;
+  padding-top: 80px;
+  height: 100%;
+}
+.nav_items {
+  margin-left: 35px;
+  float: left;
+  margin-top: 20px;
+}
+.nav_items a {
+  margin-right: 20px;
+}
+.nav_items a:hover {
+  border: 1px solid #333;
+}
+.center {
+  text-align: center;
+}
+h1, h2, h3, h4 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+h2 {
+  font-size: 1.2em;
+  margin-bottom: 3px;
+  text-center: center;
+  font-weight: normal;
+  color: #777;
+}
+.left {
+  text-align: left;
+  letter-spacing: 1.5px;
+}
+.footer {
+  position: absolute;
+bottom: 0px;
+height:60px;
+width: 100%;
+padding: 20px;
+margin-top: 25px;
+background-color: #312312;
+  
+}
+.footer p {
+  color: #FFF;
+}
