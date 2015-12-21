@@ -48,7 +48,7 @@ group :development do
   gem 'spring'
 end
 
-gem :production do
+group :production do
   # Use Postgress as database n production
   gem 'pg'
   
