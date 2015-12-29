@@ -1,0 +1,18 @@
+<%= render 'shared/page_title', title:@recipe.name  %>
+<div class="row">
+  <div class="col-md-4 pull-right center">
+    <%= gravatar_for @recipe.chef, size: 200 %>
+    <p>
+      <h5>Brought to you by <%= @recipe.chef.chefname %></h5>
+    </p>
+  </div>
+  <div class="col-md-8">
+    <%= link_to "Edit Recipe", edit_recipe_path, class: "btn btn-primary pull-right" %>
+    <h3><%= @recipe.summary %></h3>
+    <div class="well">
+      <p><strong>Steps:</strong></p>
+      <%= simple_format(@recipe.description) %> <!-- simple_format() helps to render the description in list - as originally typed. -->
+    </div>
+  </div>
+</div>
+<%= link_to "Return to recipe listing", recipes_path, class: "btn btn-warning btn-small" %>

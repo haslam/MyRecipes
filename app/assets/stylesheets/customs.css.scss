@@ -65,7 +65,7 @@ h2 {
   text-align: left;
   letter-spacing: 1.5px;
 }
-.footer {
+/*.footer {
   position: absolute;
 bottom: 0px;
 height:60px;
@@ -75,6 +75,32 @@ margin-top: 25px;
 background-color: #312312;
   
 }
+
 .footer p {
   color: #FFF;
 }
+*/
+
+.chef_info {
+  margin-top: 10px;
+}
+.gravatar {
+  border-radius: 10px;
+}
+.well {
+  background-color: #ededed;
+}
+input, textarea, select, .uneditable-input { 
+  border: 1px solid #d2d2d2;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+input {
+  height: auto !important;
+}
+.mt-10 {
+  margin-top: 10px;
+}
+
+
