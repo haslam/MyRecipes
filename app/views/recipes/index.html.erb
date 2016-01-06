@@ -1,5 +1,13 @@
 <%= render 'shared/page_title', title: "All Recipes" %>
 
+<ul class="nav nav-tabs">
+  <li class="active">
+    <%= link_to "Recipes", recipes_path %>
+  </li>
+  <li>
+    <%= link_to "Chefs", chefs_path %>
+  </li>
+</ul>
 <!-- Pagination -->
 <!-- will_paginate would need a record set object to work, since we have @recipes object available already, will_paginate works with that, otherwise, we would have had to provide an object to use -->
 <%= will_paginate %>
