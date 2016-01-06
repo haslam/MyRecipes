@@ -1,10 +1,15 @@
 <%= render 'shared/page_title', title: "All Recipes" %>
+
+<!-- Pagination -->
+<!-- will_paginate would need a record set object to work, since we have @recipes object available already, will_paginate works with that, otherwise, we would have had to provide an object to use -->
+<%= will_paginate %>
+<!-- Pagination ends -->
 <% @recipes.each do |recipe| %>
 
   <div class="row">
     <div class="col-md-2">
       <section class="chef_info center">
-        <%= gravatar_for recipe.chef, size: 100 %>
+        <%= link_to gravatar_for(recipe.chef, size: 100), chef_path(recipe.chef) %>
         <h5>Chef name: <%= recipe.chef.chefname %></h5>
       </section>
     </div>
@@ -13,8 +18,21 @@
       <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
       <p><%= link_to recipe.summary %></p>
       <p>
-       <span class="quiet"><small><%= time_ago_in_words(recipe.created_at) %> ago</small></span>
+       <span class="quiet"><small>created: <%= time_ago_in_words(recipe.created_at) %> ago, </small></span>
+       
+       <span class="quiet"><small>updated: <%= time_ago_in_words(recipe.updated_at) %> ago</small></span>
       </p>
+      
+        <div class="pull-right">
+        <%= link_to like_recipe_path(recipe, like: true), method: :post do %> <!-- link to route like and pass in the recipe object to get the recipe id and a like parameter to get selected like. assign a method post to it since the link goes on get by default, moreover, we have instructed the like route in its declaration to look for method post -->
+        <i class="glyphicon glyphicon-thumbs-up"></i> &nbsp <%= recipe.thumbs_up_total %>
+        <% end %>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <%= link_to like_recipe_path(recipe, like: false), method: :post do %>
+        <i class="glyphicon glyphicon-thumbs-down"></i> <%= recipe.thumbs_down_total %>
+        <% end %>
+      </div>
+      
     </div>
     <div class="col-md-4">
       <%= image_tag(recipe.picture.url, size: "250x150", class: "gravatar") if recipe.picture? %>
@@ -22,3 +40,7 @@
   </div>
   <hr>
 <% end %>
+
+<!-- Pagination -->
+<%= will_paginate %>
+<!-- Pagination ends -->

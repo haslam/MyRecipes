@@ -12,6 +12,19 @@ Rails.application.routes.draw do
   #patch 'recipes/:id', to: 'recipes#update'
   #get 'recipes/:id', to: 'recipes#show', as: 'recipe'
   #delete 'recipes/:id', to: 'recipes#destroy'
-  resources :recipes
+  resources :recipes do
+      member do
+        post 'like'
+      end
+  end
   
+  resources :chefs, except: [:new]  # except is used to exclude a route from being created
+  
+  get '/register', to: 'chefs#new'  # create a register route using the chefs#new
+  
+  get '/login', to: 'logins#new'  #login page link
+  
+  post '/login', to: 'logins#create'  # loging in that creates login session
+  
+  get '/logout', to: 'logins#destroy' #logout destroys session
 end
