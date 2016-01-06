@@ -34,6 +34,8 @@ gem 'bootstrap-will_paginate', '0.0.10' # Hooks into will_paginate to format the
 
 gem 'bcrypt', '3.1.7' # add bcrypt for authentication
 
+gem 'fog', '1.23.0'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
