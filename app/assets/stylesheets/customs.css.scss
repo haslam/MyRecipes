@@ -105,6 +105,9 @@ input, textarea, select, .uneditable-input {
 input {
   height: auto !important;
 }
+.input_checkbox input {
+  width: auto !important;
+}
 .mt-10 {
   margin-top: 10px;
 }
