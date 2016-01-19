@@ -1,4 +1,4 @@
-<%= render 'shared/page_title', title: "All Recipes" %>
+<%= render 'shared/page_title', title: "Recipes for : " + @style.name + " food" %>
 
 <ul class="nav nav-tabs">
   <li class="active">
@@ -10,9 +10,9 @@
 </ul>
 <!-- Pagination -->
 <!-- will_paginate would need a record set object to work, since we have @recipes object available already, will_paginate works with that, otherwise, we would have had to provide an object to use -->
-<%= will_paginate %>
+<%= will_paginate @recipes %>
 <!-- Pagination ends -->
-<% @recipes.each do |recipe| %>
+<% @style.recipes.each do |recipe| %>
 
   <div class="row">
     <div class="col-md-2">
@@ -52,5 +52,5 @@
 <% end %>
 
 <!-- Pagination -->
-<%= will_paginate %>
+<%= will_paginate @recipes %>
 <!-- Pagination ends -->
