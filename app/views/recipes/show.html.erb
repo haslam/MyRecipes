@@ -7,8 +7,11 @@
     </p>
   </div>
   <div class="col-md-8">
-    <% if logged_in? and @recipe.chef == current_user %>
+    <% if logged_in? and (@recipe.chef == current_user || current_user.admin?) %> <!-- or if current_user's admin column row is true  -->
       <%= link_to "Edit this recipe", edit_recipe_path, class: "btn btn-primary pull-right" %>
+    <% end %>
+    <% if current_user.admin? %>
+      <%= link_to "[Delete Recipe]", @recipe, method: :delete, data: { confirm: "Are you sure?" } %> <!-- You use method: :delete as given in the route else using destroy will set a get method -->
     <% end %>
     <h3><%= @recipe.summary %></h3>
     <div class="show_recipe">

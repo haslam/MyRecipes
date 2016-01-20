@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       end
   end
   
-  resources :chefs, except: [:new]  # except is used to exclude a route from being created
+  resources :chefs, except: [:new, :destroy]  # except is used to exclude a route from being created
   
   get '/register', to: 'chefs#new'  # create a register route using the chefs#new
   
