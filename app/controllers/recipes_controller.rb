@@ -13,6 +13,9 @@ class RecipesController < ApplicationController
   
   def show
     #@recipe = Recipe.find(params[:id])
+    #@review = Recipe.reviews.find
+    @reviews = @recipe.reviews.paginate(page: params[:page], per_page: 3)
+    @review = @recipe.reviews.new
   end
   
   def new
@@ -65,6 +68,8 @@ class RecipesController < ApplicationController
     end
   end
   
+  
+  
   private
     def recipe_params
       params.require(:recipe).permit(:name, :summary, :description, :picture, style_ids: [], ingredient_ids: [])
@@ -88,9 +93,7 @@ class RecipesController < ApplicationController
       end
     end
     
-    def admin_user
-      redirect_to recipes_path unless current_user.admin?
-    end
+    
     
     
 end

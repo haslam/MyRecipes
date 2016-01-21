@@ -111,7 +111,12 @@ input {
 .mt-10 {
   margin-top: 10px;
 }
-
+.mt-30 {
+  margin-top: 30px;
+}
+.mb-30 {
+  margin-bottom: 30px;
+}
 span.picture {
   margin-top: 10px;
   input {
@@ -120,4 +125,21 @@ span.picture {
 }
 .show_recipe {
   margin: 10px;
+}
+.review_img .gravatar {
+  border-radius: 50% !important;
+}
+.inline-text {
+  color: #576366;
+}
+.inline-text a {
+  text-decoration: none;
+  color: #576366;
+}
+.review-footer {
+  background-color: #f9fafa;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.05) inset,0 2px 0 rgba(0,0,0,0.1);
+  margin-bottom: 20px;
 }

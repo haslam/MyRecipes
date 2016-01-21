@@ -37,6 +37,97 @@
         <% end %>
       </div>
     </div>
+    
+    <!-- Reviews section -->
+  
+    <div class="row">
+      <div class="col-md-10">
+          <% if @reviews.any? %>
+          <div class="row">
+            <div class="col-md-5">
+            <h3><em><%= pluralize(@recipe.review_count, 'Review') %>:</em></h3>
+            <%= will_paginate @reviews %>
+          </div>
+          </div>
+          <% end %>
+          
+          <% if @reviews.any? %>
+          <% @reviews.each do |review| %>
+          <hr>
+            <div class="row">
+              <div class="col-md-2">
+                <!-- ========  -->
+                          
+                  <section class="chef_info review_img center">
+                    <%= link_to gravatar_for(review.chef, size: 50), chef_path(review.chef) %>
+                  </section>
+              
+                <!-- ========= -->
+              </div>
+              <div class="col-md-10">
+                <p class="inline-text">
+                   <span class="quiet"><small><strong><%= link_to review.chef.chefname, chef_path(review.chef) %></strong> over <%= time_ago_in_words(review.created_at) %> ago  </small></span>
+                </p>
+                <h4><%= review.body %></h4>
+                <% if logged_in? and current_user.admin? %>
+                <p class="text-right"><%= link_to recipe_review_path(@recipe, review), :alt => "Delete this review", class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" } do %>
+                <i class="glyphicon glyphicon-remove"></i> 
+                <% end %></p>
+                <% end %>
+              </div>
+            </div>
+           <% end %>
+           <hr>
+        <% end %>
+      </div>
+      </div>
+      
+      <% if !logged_in? %>
+        <div class="row">
+          <div class="col-md-12 review-footer">
+            <p>Posting a review is only allowed for active chefs. <br> Kindly <%= link_to "log in", login_path %> or <%= link_to "Sign up", register_path %> </p></p>
+          </div>
+        </div>
+      <% end %>
+      <% if logged_in? %>
+      
+      <div class="row">
+      <div class="col-md-8  col-md-offset-2">
+        <h3>Leave a review</h3>
+        <div class="well">
+           <%= form_for([@recipe,@review]) do |f| %>
+           <!-- Error section -->
+             <% if @review.errors.any? %>
+              <div class="row">
+                <div class="alert alert-danger col-md-8 col-md-offset-2">
+                  <h5>Please correct the following error(s):</h5>
+                  <ul>
+                    <% @review.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+              <% end %>
+           <!-- Error ends -->
+           
+            <%= f.label :body %>
+            <%= f.text_area :body %>
+            
+            <%= f.submit 'Post review', class: "btn btn-success btn-md" %>
+           <% end %>
+        </div>
+        
+      </div>
+      </div>
+      <% end %>
+      
+    
+    <!-- reviews end -->
+
+  
+      
+    
   </div>
 </div>
 <%= link_to "Return to recipe listing", recipes_path, class: "btn btn-warning btn-small" %>

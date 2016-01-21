@@ -12,9 +12,12 @@ Rails.application.routes.draw do
   #patch 'recipes/:id', to: 'recipes#update'
   #get 'recipes/:id', to: 'recipes#show', as: 'recipe'
   #delete 'recipes/:id', to: 'recipes#destroy'
+  
   resources :recipes do
+    resources :reviews
+    # Add a member like routes to the recipe resources, links to the RecipesController like method
       member do
-        post 'like'
+        post 'like' 
       end
   end
   
@@ -30,4 +33,6 @@ Rails.application.routes.draw do
   
   resources :styles, only: [:new, :create, :show]
   resources :ingredients, only: [:new, :create, :show]
+  
+  
 end
